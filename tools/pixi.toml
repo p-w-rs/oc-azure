@@ -1,0 +1,11 @@
+[workspace]
+name = "oc-azure-tools"
+channels = ["conda-forge"]
+platforms = ["osx-arm64", "osx-64", "linux-64", "linux-aarch64"]
+[dependencies]
+python = "3.12.*"
+[pypi-dependencies]
+azure-cli = "==2.92.0"
+
+[pypi-options]
+prerelease-mode = "allow"
