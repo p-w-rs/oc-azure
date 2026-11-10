@@ -3,7 +3,7 @@ import assert from "node:assert/strict"
 import { classifyAz, classifyRestCall, defaultEffect, findAzCalls, normalizeAccount, shellSegments, vmAlias } from "./model.js"
 
 test("accounts: defaults and validation", () => {
-  assert.deepEqual(normalizeAccount({ id: "work", tenant: "asirobots.com" }, new Date(0)), { id: "work", auth: "browser", tenant: "asirobots.com", updatedAt: "1970-01-01T00:00:00.000Z" })
+  assert.deepEqual(normalizeAccount({ id: "work", tenant: "contoso.com" }, new Date(0)), { id: "work", auth: "browser", tenant: "contoso.com", updatedAt: "1970-01-01T00:00:00.000Z" })
   assert.throws(() => normalizeAccount({ id: "sp", auth: "serviceprincipal", tenant: "x.com" }), /clientId/)
   assert.throws(() => normalizeAccount({ id: "w", tenant: "not a tenant" }), /tenant/)
   assert.throws(() => normalizeAccount({ id: "w", secret: "x" }), /Unknown account field/)

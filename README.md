@@ -62,13 +62,26 @@ costs, deletes, admin and unknown writes ask. Every cell is editable in the GUI
 (`/azure`, the Review-pane **+** menu, or **Settings → Azure**); **Allow
 always** on a prompt writes allow. Azure's own roles still apply.
 
-## Setup
+## Install
+
+Requires [OpenCode](https://opencode.ai) 2.2.6+ (CLI or Desktop) and [Pixi](https://pixi.sh); macOS or Linux.
 
 ```sh
-pixi run --locked install                          # verified snapshot into your OpenCode config
-pixi run signin work --tenant contoso.com          # or the GUI, or ask your agent
-pixi run signin work --device                      # code-based sign-in
+git clone https://github.com/p-w-rs/oc-azure.git && cd oc-azure
+pixi run --locked install          # runs the tests, then installs a verified snapshot into your OpenCode config
 ```
+
+Restart OpenCode (or `/reload`). Then open **Settings → Azure** (or `/azure` in a session) and add an account, or from a terminal: `pixi run signin work --tenant company.com`.
+Agents can also set things up for you when you ask.
+
+```sh
+pixi run --locked install-status   # what is installed, and whether its files are intact
+pixi run --locked rollback         # back to the previous snapshot
+pixi run --locked uninstall        # removes only this plugin's entry; your data stays
+```
+
+Updating: `git pull && pixi run --locked install`. Accounts, sign-ins and permissions live in
+`~/.local/share/oc-azure` and survive updates; move them between computers with **Export** / **Import** in the view.
 
 ## Development
 
